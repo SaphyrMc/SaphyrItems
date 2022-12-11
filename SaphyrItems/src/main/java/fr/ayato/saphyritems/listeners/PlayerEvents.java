@@ -1,6 +1,7 @@
 package fr.ayato.saphyritems.listeners;
 
 import de.tr7zw.nbtapi.NBTItem;
+import fr.ayato.saphyritems.utils.Config;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -10,10 +11,7 @@ import org.bukkit.event.player.PlayerRespawnEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class PlayerEvents implements Listener {
 
@@ -60,6 +58,37 @@ public class PlayerEvents implements Listener {
                 }
                 itemData.remove(entry.getKey());
                 infiniteList.remove(playerUUID);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onKill(PlayerDeathEvent event) {
+        Player player = event.getEntity();
+        Player killer = player.getKiller();
+        if (killer != null) {
+            NBTItem nbtItem = new NBTItem(killer.getItemInHand());
+            if (nbtItem.hasKey("item")) {
+                if (nbtItem.hasKey("kills")) {
+                    int kills = Integer.parseInt(nbtItem.getString("kills"));
+                    kills++;
+                    nbtItem.setString("kills", String.valueOf(kills));
+                    killer.setItemInHand(nbtItem.getItem());
+                    ItemMeta meta = killer.getItemInHand().getItemMeta();
+                    List<String> lore = Config.getItemLore(nbtItem.getString("item"));
+                    List<String> newLore = new ArrayList<>();
+                    for (String line : lore) {
+                        if (line.contains("%kills%")) {
+                            line = line.replace("%kills%", String.valueOf(kills));
+                        } else if (line.contains("%owner%")) {
+                            line = line.replace("%owner%", nbtItem.getString("owner"));
+                        }
+                        newLore.add(line);
+                    }
+                    meta.setLore(newLore);
+                    killer.getItemInHand().setItemMeta(meta);
+                    killer.updateInventory();
+                }
             }
         }
     }

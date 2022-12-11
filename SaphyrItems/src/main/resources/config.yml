@@ -16,3 +16,20 @@ items:
     enchantments:
       - "ARROW_INFINITE:1"
       - "ARROW_KNOCKBACK:2"
+  sword:
+    material: DIAMOND_SWORD
+    name: "§b❃ §b§lEpée Antique §b❃"
+    infinite: true
+    unbreakable: true
+    lore:
+      - ""
+      - "§f➥ §eCette §bEpée §eancienne"
+      - "§f➥ §erevient dans §bl'inventaire"
+      - "§f➥ §eaprès §bla mort §ede son guerrier !"
+      - ""
+      - "§f⦁ §bPropriétaire: §d%owner%"
+      - "§f⦁ §bVictimes: §d%kills%"
+      - "§f⦁ §bRareté §f» §c✯✯✯✯§f✯"
+    enchantments:
+      - "DAMAGE_ALL:5"
+      - "FIRE_ASPECT:2"
