@@ -33,3 +33,33 @@ items:
     enchantments:
       - "DAMAGE_ALL:5"
       - "FIRE_ASPECT:2"
+  rod:
+    material: FISHING_ROD
+    name: "§b❃ §b§lRod Antique §b❃"
+    infinite: true
+    unbreakable: false
+    lore:
+      - ""
+      - "§f➥ §eCette §bRod §eancienne"
+      - "§f➥ §erevient dans §bl'inventaire"
+      - "§f➥ §eaprès §bla mort §ede son guerrier !"
+      - ""
+      - "§f⦁ §bPropriétaire: §d%owner%"
+      - "§f⦁ §bVictimes: §d%kills%"
+      - "§f⦁ §bRareté §f» §c✯✯✯✯§f✯"
+    enchantments:
+  rod2:
+    material: FISHING_ROD
+    name: "§b❃ §b§lRod Antique §b❃"
+    infinite: false
+    unbreakable: false
+    lore:
+      - ""
+      - "§f➥ §eCette §bRod §eancienne"
+      - "§f➥ §erevient dans §bl'inventaire"
+      - "§f➥ §eaprès §bla mort §ede son guerrier !"
+      - ""
+      - "§f⦁ §bPropriétaire: §d%owner%"
+      - "§f⦁ §bVictimes: §d%kills%"
+      - "§f⦁ §bRareté §f» §c✯✯✯✯§f✯"
+    enchantments:

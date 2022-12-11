@@ -36,10 +36,8 @@ public class PlayerEvents implements Listener {
                             put(item, 1);
                         }});
                     }
-                } else {
-                    itemData.put(item, 1);
+                    iterator.remove();
                 }
-                iterator.remove();
             }
         }
     }
