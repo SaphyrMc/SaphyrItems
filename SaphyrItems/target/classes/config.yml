@@ -1,0 +1,18 @@
+items:
+  bow:
+    material: BOW
+    name: "§b❃ §b§lArc Antique §b❃"
+    infinite: true
+    unbreakable: true
+    lore:
+      - ""
+      - "§f➥ §eCet §bArc §eancien"
+      - "§f➥ §erevient dans §bl'inventaire"
+      - "§f➥ §eaprès §bla mort §ede son guerrier !"
+      - ""
+      - "§f⦁ §bPropriétaire: §d%owner%"
+      - "§f⦁ §bVictimes: §d%kills%"
+      - "§f⦁ §bRareté §f» §c✯✯✯✯§f✯"
+    enchantments:
+      - "ARROW_INFINITE:1"
+      - "ARROW_KNOCKBACK:2"

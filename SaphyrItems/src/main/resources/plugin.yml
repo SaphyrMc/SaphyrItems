@@ -1,0 +1,7 @@
+name: SaphyrItems
+version: 1.0
+author: ayato__
+main: fr.ayato.saphyritems.Main
+commands:
+  sitems:
+    permissions: sitems.give
