@@ -1,6 +1,7 @@
 package fr.ayato.saphyritems;
 
 import fr.ayato.saphyritems.commands.GiveItems;
+import fr.ayato.saphyritems.listeners.PlayerEvents;
 import fr.ayato.saphyritems.utils.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -22,7 +23,7 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "[on] " + ChatColor.AQUA + "SaphyrItems Enabled !" + ChatColor.LIGHT_PURPLE + " [on]");
         getCommand("sitems").setExecutor(new GiveItems(this));
-        //getServer().getPluginManager().registerEvents(new EventListener(), this);
+        getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
         configItems = Config.getAllItems();
     }
 

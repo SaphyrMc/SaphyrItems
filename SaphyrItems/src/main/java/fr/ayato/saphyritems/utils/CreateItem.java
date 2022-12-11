@@ -24,19 +24,10 @@ public class CreateItem {
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(itemName);
 
-        NBTItem nbtItem = new NBTItem(itemStack);
-        nbtItem.setString("item", item);
-
-        if (itemInfinite) {
-            nbtItem.setBoolean("infinite", true);
-        }
-
         for (int i = 0; i < itemLore.size(); i++) {
             if (itemLore.get(i).contains("%owner%")) {
-                nbtItem.setString("owner", playerName);
                 itemLore.set(i, itemLore.get(i).replace("%owner%", playerName));
             } else if (itemLore.get(i).contains("%kills%")) {
-                nbtItem.setString("kills", "0");
                 itemLore.set(i, itemLore.get(i).replace("%kills%", "0"));
             } else {
                 itemLore.set(i, itemLore.get(i));
@@ -56,8 +47,19 @@ public class CreateItem {
         if (itemUnbreakable) {
             itemMeta.spigot().setUnbreakable(true);
         }
-
         itemStack.setItemMeta(itemMeta);
+
+        NBTItem nbtItem = new NBTItem(itemStack);
+        nbtItem.setString("item", item);
+
+        if (itemInfinite) {
+            nbtItem.setBoolean("infinite", true);
+        }
+        nbtItem.setString("owner", playerName);
+        nbtItem.setString("kills", "0");
+        String randomString = java.util.UUID.randomUUID().toString();
+        nbtItem.setString("rdm", randomString);
+        nbtItem.applyNBT(itemStack);
 
         return itemStack;
     }
