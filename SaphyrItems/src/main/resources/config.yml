@@ -1,65 +1,119 @@
 items:
-  bow:
-    material: BOW
-    name: "§b❃ §b§lArc Antique §b❃"
-    infinite: true
-    unbreakable: true
-    lore:
-      - ""
-      - "§f➥ §eCet §bArc §eancien"
-      - "§f➥ §erevient dans §bl'inventaire"
-      - "§f➥ §eaprès §bla mort §ede son guerrier !"
-      - ""
-      - "§f⦁ §bPropriétaire: §d%owner%"
-      - "§f⦁ §bVictimes: §d%kills%"
-      - "§f⦁ §bRareté §f» §c✯✯✯✯§f✯"
-    enchantments:
-      - "ARROW_INFINITE:1"
-      - "ARROW_KNOCKBACK:2"
   sword:
     material: DIAMOND_SWORD
-    name: "§b❃ §b§lEpée Antique §b❃"
+    name: "§9§l❃ Epée Ancienne ❃"
     infinite: true
     unbreakable: true
     lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯§7✯✯ §e§lRARE"
       - ""
-      - "§f➥ §eCette §bEpée §eancienne"
-      - "§f➥ §erevient dans §bl'inventaire"
-      - "§f➥ §eaprès §bla mort §ede son guerrier !"
+      - "§7Cette §9épée §7vous permettra de"
+      - "§7tuer vos §9ennemis §7plus §9rapidement §7!"
       - ""
-      - "§f⦁ §bPropriétaire: §d%owner%"
-      - "§f⦁ §bVictimes: §d%kills%"
-      - "§f⦁ §bRareté §f» §c✯✯✯✯§f✯"
+      - "§9» §7Propriétaire: §9§l%owner%"
+      - ""
+      - "§c§l✗ §cCassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
     enchantments:
       - "DAMAGE_ALL:5"
       - "FIRE_ASPECT:2"
-  rod:
-    material: FISHING_ROD
-    name: "§b❃ §b§lRod Antique §b❃"
+  sword2:
+    material: DIAMOND_SWORD
+    name: "§b§l❃ Epée Antique ❃"
+    infinite: true
+    unbreakable: true
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯§7✯ §d§lEPIQUE"
+      - ""
+      - "§7Cette §bépée antique §7va annihiler"
+      - "§7vos §bennemis §7 !"
+      - ""
+      - "§b» §7Propriétaire: §b§l%owner%"
+      - "§b» §7Victimes: §b§l%kills%"
+      - ""
+      - "§a§l✓ §aIncassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DAMAGE_ALL:5"
+      - "FIRE_ASPECT:2"
+  sword3:
+    material: DIAMOND_SWORD
+    name: "§d§l⚡ §b§k!!§d§l Epée de Zeus §b§k!!§d§l ⚡"
+    infinite: true
+    unbreakable: true
+    thor: true
+    thor-cooldown: 30
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+      - ""
+      - "§7Le §droi des dieux §7a décidé"
+      - "§7de vous donner son §dépée §7 !"
+      - "§7Cliquez droit pour invoquer la §dfoudre §7!"
+      - ""
+      - "§d» §7Propriétaire: §d§l%owner%"
+      - "§d» §7Victimes: §d§l%kills%"
+      - "§d» §7Dernier tué: §d§l%lastkill%"
+      - ""
+      - "§a§l✓ §aIncassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DAMAGE_ALL:5"
+      - "FIRE_ASPECT:2"
+  pioche:
+    material: DIAMOND_PICKAXE
+    name: "§c§l✿ §b§k!!§c§l Pioche de Ponos §b§k!!§c§l ✿"
     infinite: true
     unbreakable: false
     lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
       - ""
-      - "§f➥ §eCette §bRod §eancienne"
-      - "§f➥ §erevient dans §bl'inventaire"
-      - "§f➥ §eaprès §bla mort §ede son guerrier !"
+      - "§7Le dieu §cPonos §7a décidé"
+      - "§7de vous donner sa §cpioche §7 !"
+      - "§7Minez §cplus vite §7!"
       - ""
-      - "§f⦁ §bPropriétaire: §d%owner%"
-      - "§f⦁ §bVictimes: §d%kills%"
-      - "§f⦁ §bRareté §f» §c✯✯✯✯§f✯"
+      - "§d» §7Propriétaire: §d§l%owner%"
+      - ""
+      - "§c§l✗ §cCassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
     enchantments:
-  rod2:
-    material: FISHING_ROD
-    name: "§b❃ §b§lRod Antique §b❃"
-    infinite: false
+        - "DIG_SPEED:10"
+        - "DURABILITY:5"
+    effects: true
+    effects-type: "hand"
+    effects-list:
+      - "SPEED:0"
+      - "FAST_DIGGING:1"
+  pioche2:
+    material: DIAMOND_PICKAXE
+    name: "§e§l❂ §b§k!!§c§l Pioche de Cronos §b§k!!§e§l ❂"
+    infinite: true
     unbreakable: false
     lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
       - ""
-      - "§f➥ §eCette §bRod §eancienne"
-      - "§f➥ §erevient dans §bl'inventaire"
-      - "§f➥ §eaprès §bla mort §ede son guerrier !"
+      - "§7Le dieu §eCronos §7a décidé"
+      - "§7de vous donner sa §epioche §7 !"
+      - "§7Minez §eplus vite §7!"
       - ""
-      - "§f⦁ §bPropriétaire: §d%owner%"
-      - "§f⦁ §bVictimes: §d%kills%"
-      - "§f⦁ §bRareté §f» §c✯✯✯✯§f✯"
+      - "§d» §7Propriétaire: §d§l%owner%"
+      - ""
+      - "§c§l✓ §cCassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
     enchantments:
+      - "DIG_SPEED:20"
+    effects: true
+    effects-type: "hand"
+    effects-list:
+      - "SPEED:1"
+      - "FAST_DIGGING:1"
+      - "JUMP:1"

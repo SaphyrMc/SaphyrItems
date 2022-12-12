@@ -9,50 +9,35 @@ public class Config {
 
     //get the all the items from the config file
     public static List<String> getAllItems() {
-        List<String> items = new ArrayList<>();
-        for (String s : Main.getInstance().getConfig().getKeys(true)) {
-            try {
-                if (!Main.getInstance().getConfig().getString(s + ".material").isEmpty()) {
-                    items.add(s);
-                }
-            } catch (NullPointerException ignored) {
-            }
-        }
-        return items;
+        return new ArrayList<>(Main.getInstance().getConfig().getConfigurationSection("items").getKeys(false));
     }
 
     //get the item's name
-    @SuppressWarnings("unused")
     public static String getItemName(String item) {
         return Main.getInstance().getConfig().getString("items." + item + ".name");
     }
 
     //get the item's material
-    @SuppressWarnings("unused")
     public static String getItemMaterial(String item) {
         return Main.getInstance().getConfig().getString("items." + item + ".material");
     }
 
     //get the item's lore
-    @SuppressWarnings("unused")
     public static List<String> getItemLore(String item) {
         return Main.getInstance().getConfig().getStringList("items." + item + ".lore");
     }
 
     //get if the item want the enchants hidden
-    @SuppressWarnings("unused")
     public static boolean isEnchantsHidden(String item) {
         return Main.getInstance().getConfig().getBoolean("items." + item + ".hide");
     }
 
     //get if the item is infinite
-    @SuppressWarnings("unused")
     public static boolean isInfinite(String item) {
         return Main.getInstance().getConfig().getBoolean("items." + item + ".infinite");
     }
 
     //get the items enchants
-    @SuppressWarnings("unused")
     public static List<String> getItemEnchants(String item) {
         List<String> enchants = new ArrayList<>();
         //check if null
@@ -65,5 +50,55 @@ public class Config {
     //get if the item is unbreakable
     public static boolean isUnbreakable(String item) {
         return Main.getInstance().getConfig().getBoolean("items." + item + ".unbreakable");
+    }
+
+    //Get if the item is thor
+    public static boolean isThor(String item) {
+        return Main.getInstance().getConfig().getBoolean("items." + item + ".thor");
+    }
+
+    //Get the thor cooldown
+    public static int getThorCooldown(String item) {
+        return Main.getInstance().getConfig().getInt("items." + item + ".thor-cooldown");
+    }
+
+    //Get if the item is Wither
+    public static boolean isWither(String item) {
+        return Main.getInstance().getConfig().getBoolean("items." + item + ".wither");
+    }
+
+    //Get the Wither cooldown
+    public static int getWitherCooldown(String item) {
+        return Main.getInstance().getConfig().getInt("items." + item + ".wither-cooldown");
+    }
+
+    //Get the duration of the Wither
+    public static int getWitherDuration(String item) {
+        return Main.getInstance().getConfig().getInt("items." + item + ".wither-duration");
+    }
+
+    //Get the Wither amplifier
+    public static int getWitherAmplifier(String item) {
+        return Main.getInstance().getConfig().getInt("items." + item + ".wither-amplifier");
+    }
+
+    //get the wither radius
+    public static int getWitherRadius(String item) {
+        return Main.getInstance().getConfig().getInt("items." + item + ".wither-radius");
+    }
+
+    //get is the items give effects
+    public static boolean isGiveEffects(String item) {
+        return Main.getInstance().getConfig().getBoolean("items." + item + ".effects");
+    }
+
+    //get the effects-type
+    public static String getEffectsType(String item) {
+        return Main.getInstance().getConfig().getString("items." + item + ".effects-type");
+    }
+
+    //get the effects-list
+    public static List<String> getEffectsList(String item) {
+        return Main.getInstance().getConfig().getStringList("items." + item + ".effects-list");
     }
 }

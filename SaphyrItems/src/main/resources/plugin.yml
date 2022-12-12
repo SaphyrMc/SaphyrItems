@@ -1,7 +1,9 @@
 name: SaphyrItems
-version: 1.0
+version: 1.1
 author: ayato__
 main: fr.ayato.saphyritems.Main
 commands:
   sitems:
     permissions: sitems.give
+  sitems.gui.open:
+    permissions: sitems.gui.open

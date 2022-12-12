@@ -19,6 +19,9 @@ public class CreateItem {
         boolean itemGlow = Config.isEnchantsHidden(item);
         boolean itemUnbreakable = Config.isUnbreakable(item);
         boolean itemInfinite = Config.isInfinite(item);
+        boolean isThor = Config.isThor(item);
+        boolean isWither = Config.isWither(item);
+        boolean isEffect = Config.isGiveEffects(item);
 
         ItemStack itemStack = new ItemStack(Material.getMaterial(itemMaterial));
         ItemMeta itemMeta = itemStack.getItemMeta();
@@ -29,6 +32,8 @@ public class CreateItem {
                 itemLore.set(i, itemLore.get(i).replace("%owner%", playerName));
             } else if (itemLore.get(i).contains("%kills%")) {
                 itemLore.set(i, itemLore.get(i).replace("%kills%", "0"));
+            } else if (itemLore.get(i).contains("%lastkill%")) {
+                itemLore.set(i, itemLore.get(i).replace("%lastkill%", "Aucun"));
             } else {
                 itemLore.set(i, itemLore.get(i));
             }
@@ -55,6 +60,34 @@ public class CreateItem {
         if (itemInfinite) {
             nbtItem.setBoolean("infinite", true);
         }
+
+        if (isThor) {
+            nbtItem.setBoolean("thor", true);
+            Integer cooldown = Config.getThorCooldown(item);
+            nbtItem.setInteger("thor-cooldown", cooldown);
+        }
+
+        if (isWither) {
+            nbtItem.setBoolean("wither", true);
+            Integer cooldown = Config.getWitherCooldown(item);
+            Integer duration = Config.getWitherDuration(item) * 20;
+            Integer amplifier = Config.getWitherAmplifier(item);
+            Integer radius = Config.getWitherRadius(item);
+            nbtItem.setInteger("wither-cooldown", cooldown);
+            nbtItem.setInteger("wither-duration", duration);
+            nbtItem.setInteger("wither-amplifier", amplifier);
+            nbtItem.setInteger("wither-radius", radius);
+        }
+
+        if (isEffect) {
+            nbtItem.setBoolean("effects", true);
+            List<String> effects = Config.getEffectsList(item);
+            String effectsString = String.join(",", effects);
+            String effectType = Config.getEffectsType(item);
+            nbtItem.setString("effects-list", effectsString);
+            nbtItem.setString("effects-type", effectType);
+        }
+
         nbtItem.setString("owner", playerName);
         nbtItem.setString("kills", "0");
         String randomString = java.util.UUID.randomUUID().toString();

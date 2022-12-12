@@ -3,4 +3,6 @@ fr\ayato\saphyritems\commands\GiveItems.class
 fr\ayato\saphyritems\listeners\PlayerEvents.class
 fr\ayato\saphyritems\utils\CreateItem.class
 fr\ayato\saphyritems\utils\Config.class
+fr\ayato\saphyritems\inventories\InventoryInstance.class
 fr\ayato\saphyritems\Main.class
+fr\ayato\saphyritems\inventories\CommandMenu.class
