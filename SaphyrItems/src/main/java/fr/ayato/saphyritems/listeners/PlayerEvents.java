@@ -114,10 +114,14 @@ public class PlayerEvents implements Listener {
     public void swordActions(PlayerInteractEvent event) {
         if (event.getItem() == null) return;
         if (event.getItem().getType() == Material.AIR) return;
+        if (event.getPlayer().getItemInHand() == null) return;
+        if (event.getPlayer().getItemInHand().getType() == Material.AIR) return;
         final Player player = event.getPlayer();
         NBTItem nbtItem = new NBTItem(player.getItemInHand());
         if (nbtItem.hasKey("item")) {
             if (nbtItem.hasKey("thor")) {
+                if (event.getAction() == Action.LEFT_CLICK_AIR || event.getAction() == Action.LEFT_CLICK_BLOCK)
+                    return;
                 if (event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK) {
                     if (!thorCooldown.containsKey(player.getUniqueId())) {
                         player.getWorld().strikeLightning(player.getTargetBlock((HashSet<Byte>) null, 100).getLocation());
