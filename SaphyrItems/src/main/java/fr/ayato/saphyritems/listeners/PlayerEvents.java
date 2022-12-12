@@ -29,14 +29,11 @@ public class PlayerEvents implements Listener {
     public HashMap<UUID, HashMap<ItemStack, Integer>> infiniteList = new HashMap<>();
     public HashMap<UUID, Integer> thorCooldown = new HashMap<>();
     public HashMap<UUID, Integer> witherCooldown = new HashMap<>();
-
     public HashMap<UUID, List<String>> effectsHand = new HashMap<>();
-
     public HashMap<UUID, List<String>> effectsHelmet = new HashMap<>();
     public HashMap<UUID, List<String>> effectsChestplate = new HashMap<>();
     public HashMap<UUID, List<String>> effectsLeggings = new HashMap<>();
     public HashMap<UUID, List<String>> effectsBoots = new HashMap<>();
-
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {

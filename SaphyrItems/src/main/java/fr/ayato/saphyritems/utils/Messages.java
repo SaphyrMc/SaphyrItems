@@ -29,7 +29,7 @@ public class Messages {
         return helpMessage;
     }
 
-    public static List<String> replacePlaceHolders(List<String> lore, String owner, String kills, String lastPlayerKilled) {
+    public static void replacePlaceHolders(List<String> lore, String owner, String kills, String lastPlayerKilled) {
         if (kills == null) {
             kills = "0";
         }
@@ -45,6 +45,5 @@ public class Messages {
                 e.printStackTrace();
             }
         }
-        return lore;
     }
 }
