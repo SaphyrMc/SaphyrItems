@@ -29,7 +29,7 @@ public class GiveItems implements CommandExecutor {
         if (args.length == 0) {
             if (!sender.hasPermission("sitems.gui.open")) return false;
             Player player = (Player) sender;
-            player.openInventory(CommandMenu.getMenu());
+            player.openInventory(CommandMenu.initCommandGui());
             return true;
         } else if (args.length == 4) {
             final Player player = Bukkit.getPlayer(args[1]);

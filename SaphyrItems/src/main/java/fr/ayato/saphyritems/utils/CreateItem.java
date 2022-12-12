@@ -27,17 +27,7 @@ public class CreateItem {
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(itemName);
 
-        for (int i = 0; i < itemLore.size(); i++) {
-            if (itemLore.get(i).contains("%owner%")) {
-                itemLore.set(i, itemLore.get(i).replace("%owner%", playerName));
-            } else if (itemLore.get(i).contains("%kills%")) {
-                itemLore.set(i, itemLore.get(i).replace("%kills%", "0"));
-            } else if (itemLore.get(i).contains("%lastkill%")) {
-                itemLore.set(i, itemLore.get(i).replace("%lastkill%", "Aucun"));
-            } else {
-                itemLore.set(i, itemLore.get(i));
-            }
-        }
+        Messages.replacePlaceHolders(itemLore, playerName, null, null);
         itemMeta.setLore(itemLore);
 
         for (String enchant : itemEnchants) {

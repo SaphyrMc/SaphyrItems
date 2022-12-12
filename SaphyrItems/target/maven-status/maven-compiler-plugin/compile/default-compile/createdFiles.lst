@@ -2,6 +2,7 @@ fr\ayato\saphyritems\listeners\PlayerEvents$1.class
 fr\ayato\saphyritems\commands\GiveItems.class
 fr\ayato\saphyritems\listeners\PlayerEvents.class
 fr\ayato\saphyritems\utils\CreateItem.class
+fr\ayato\saphyritems\utils\Messages.class
 fr\ayato\saphyritems\utils\Config.class
 fr\ayato\saphyritems\inventories\InventoryInstance.class
 fr\ayato\saphyritems\Main.class

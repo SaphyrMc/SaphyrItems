@@ -33,10 +33,10 @@ public class InventoryInstance {
 
 
     public static ItemStack createGuiGlass(Material material, String name) {
-        ItemStack nop = new ItemStack(material, 1, (short)1);
-        ItemMeta meta = nop.getItemMeta();
-        meta.setDisplayName(name);
-        nop.setItemMeta(meta);
-        return nop;
+        ItemStack itemStack = new ItemStack(material, 1, (short)11);
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        itemMeta.setDisplayName(name);
+        itemStack.setItemMeta(itemMeta);
+        return itemStack;
     }
 }
