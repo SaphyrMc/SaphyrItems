@@ -15,6 +15,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class CommandMenu implements Listener {
 
@@ -64,10 +65,8 @@ public class CommandMenu implements Listener {
             String itemMaterial = Config.getItemMaterial(item);
             ItemStack itemStack = new ItemStack(Material.getMaterial(itemMaterial), 1);
             ItemMeta itemMeta = itemStack.getItemMeta();
-            itemMeta.setDisplayName("§b§l" + item);
-            //change the lore to §7§oCliquez pour obtenir l'item
-            ArrayList<String> lore = new ArrayList<>();
-            lore.add("§7§oCliquez pour obtenir l'item");
+            itemMeta.setDisplayName(Config.getItemName(item));
+            List<String> lore = Config.getItemLore(item);
             itemMeta.setLore(lore);
             itemStack.setItemMeta(itemMeta);
             int slot = itemInv.firstEmpty();
