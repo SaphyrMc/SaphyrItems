@@ -11,10 +11,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerItemHeldEvent;
-import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
@@ -31,7 +30,13 @@ public class PlayerEvents implements Listener {
     public HashMap<UUID, Integer> thorCooldown = new HashMap<>();
     public HashMap<UUID, Integer> witherCooldown = new HashMap<>();
 
-    public HashMap<UUID, List<String>> effects = new HashMap<>();
+    public HashMap<UUID, List<String>> effectsHand = new HashMap<>();
+
+    public HashMap<UUID, List<String>> effectsHelmet = new HashMap<>();
+    public HashMap<UUID, List<String>> effectsChestplate = new HashMap<>();
+    public HashMap<UUID, List<String>> effectsLeggings = new HashMap<>();
+    public HashMap<UUID, List<String>> effectsBoots = new HashMap<>();
+
 
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
@@ -164,31 +169,31 @@ public class PlayerEvents implements Listener {
     public void holdItem(PlayerItemHeldEvent event) {
         Player player = event.getPlayer();
         if (player.getInventory().getItem(event.getNewSlot()) == null || player.getInventory().getItem(event.getNewSlot()).getType() == Material.AIR) {
-            if (effects.containsKey(player.getUniqueId())) {
-                for (String effect : effects.get(player.getUniqueId())) {
+            if (effectsHand.containsKey(player.getUniqueId())) {
+                for (String effect : effectsHand.get(player.getUniqueId())) {
                     String[] split = effect.split(":");
                     PotionEffectType type = PotionEffectType.getByName(split[0]);
                     player.removePotionEffect(type);
                 }
-                effects.remove(player.getUniqueId());
+                effectsHand.remove(player.getUniqueId());
             }
             return;
         }
         ItemStack current = player.getInventory().getItem(event.getNewSlot());
         NBTItem nbtItem = new NBTItem(current);
         if (nbtItem.hasKey("item")) {
+            try {
+                for (String effect : effectsHand.get(player.getUniqueId())) {
+                    String[] split = effect.split(":");
+                    PotionEffectType type = PotionEffectType.getByName(split[0]);
+                    player.removePotionEffect(type);
+                }
+                effectsHand.remove(player.getUniqueId());
+            } catch (NullPointerException ignored) {
+            }
             if (nbtItem.hasKey("effects")) {
                 String effectType = nbtItem.getString("effects-type");
                 if (!Objects.equals(effectType, "hand")) return;
-                try {
-                    for (String effect : effects.get(player.getUniqueId())) {
-                        String[] split = effect.split(":");
-                        PotionEffectType type = PotionEffectType.getByName(split[0]);
-                        player.removePotionEffect(type);
-                    }
-                    effects.remove(player.getUniqueId());
-                } catch (NullPointerException ignored) {
-                }
                 String list = nbtItem.getString("effects-list");
                 List<String> effectList = Arrays.asList(list.split(","));
                 for (String effect : effectList) {
@@ -197,7 +202,142 @@ public class PlayerEvents implements Listener {
                     Integer amplifier = Integer.parseInt(split[1]);
                     player.addPotionEffect(type.createEffect(99999, amplifier));
                 }
-                effects.put(player.getUniqueId(), effectList);
+                effectsHand.put(player.getUniqueId(), effectList);
+            }
+        }
+    }
+
+    @EventHandler
+    public void setArmor(PlayerMoveEvent event) {
+        if (event.getPlayer() != null) {
+            Player player = event.getPlayer();
+            ItemStack helmet = player.getInventory().getHelmet();
+            ItemStack chestplate = player.getInventory().getChestplate();
+            ItemStack leggings = player.getInventory().getLeggings();
+            ItemStack boots = player.getInventory().getBoots();
+            if (helmet != null) {
+                NBTItem nbtHelmet = new NBTItem(helmet);
+                if (nbtHelmet.hasKey("item")) {
+                    if (nbtHelmet.hasKey("effects")) {
+                        String effectType = nbtHelmet.getString("effects-type");
+                        if (!Objects.equals(effectType, "armor")) return;
+                        String list = nbtHelmet.getString("effects-list");
+                        List<String> effectList = Arrays.asList(list.split(","));
+                        for (String effect : effectList) {
+                            String[] split = effect.split(":");
+                            PotionEffectType type = PotionEffectType.getByName(split[0]);
+                            Integer amplifier = Integer.parseInt(split[1]);
+                            player.addPotionEffect(type.createEffect(99999, amplifier));
+                        }
+                        effectsHelmet.put(player.getUniqueId(), effectList);
+                    }
+                }
+            } else {
+                if (effectsHelmet.containsKey(player.getUniqueId())) {
+                    try {
+                        for (String effect : effectsHelmet.get(player.getUniqueId())) {
+                            String[] split = effect.split(":");
+                            PotionEffectType type = PotionEffectType.getByName(split[0]);
+                            player.removePotionEffect(type);
+                        }
+                        effectsHelmet.remove(player.getUniqueId());
+                    } catch (NullPointerException ignored) {
+                    }
+                    effectsHelmet.remove(player.getUniqueId());
+                }
+            }
+            if (chestplate != null) {
+                NBTItem nbtChestplate = new NBTItem(chestplate);
+                if (nbtChestplate.hasKey("item")) {
+                    if (nbtChestplate.hasKey("effects")) {
+                        String effectType = nbtChestplate.getString("effects-type");
+                        if (!Objects.equals(effectType, "armor")) return;
+                        String list = nbtChestplate.getString("effects-list");
+                        List<String> effectList = Arrays.asList(list.split(","));
+                        for (String effect : effectList) {
+                            String[] split = effect.split(":");
+                            PotionEffectType type = PotionEffectType.getByName(split[0]);
+                            Integer amplifier = Integer.parseInt(split[1]);
+                            player.addPotionEffect(type.createEffect(99999, amplifier));
+                        }
+                        effectsChestplate.put(player.getUniqueId(), effectList);
+                    }
+                }
+            } else {
+                if (effectsChestplate.containsKey(player.getUniqueId())) {
+                    try {
+                        for (String effect : effectsChestplate.get(player.getUniqueId())) {
+                            String[] split = effect.split(":");
+                            PotionEffectType type = PotionEffectType.getByName(split[0]);
+                            player.removePotionEffect(type);
+                        }
+                        effectsChestplate.remove(player.getUniqueId());
+                    } catch (NullPointerException ignored) {
+                    }
+                    effectsChestplate.remove(player.getUniqueId());
+                }
+            }
+            if (leggings != null) {
+                NBTItem nbtLeggings = new NBTItem(leggings);
+                if (nbtLeggings.hasKey("item")) {
+                    if (nbtLeggings.hasKey("effects")) {
+                        String effectType = nbtLeggings.getString("effects-type");
+                        if (!Objects.equals(effectType, "armor")) return;
+                        String list = nbtLeggings.getString("effects-list");
+                        List<String> effectList = Arrays.asList(list.split(","));
+                        for (String effect : effectList) {
+                            String[] split = effect.split(":");
+                            PotionEffectType type = PotionEffectType.getByName(split[0]);
+                            Integer amplifier = Integer.parseInt(split[1]);
+                            player.addPotionEffect(type.createEffect(99999, amplifier));
+                        }
+                        effectsLeggings.put(player.getUniqueId(), effectList);
+                    }
+                }
+            } else {
+                if (effectsLeggings.containsKey(player.getUniqueId())) {
+                    try {
+                        for (String effect : effectsLeggings.get(player.getUniqueId())) {
+                            String[] split = effect.split(":");
+                            PotionEffectType type = PotionEffectType.getByName(split[0]);
+                            player.removePotionEffect(type);
+                        }
+                        effectsLeggings.remove(player.getUniqueId());
+                    } catch (NullPointerException ignored) {
+                    }
+                    effectsLeggings.remove(player.getUniqueId());
+                }
+            }
+            if (boots != null) {
+                NBTItem nbtBoots = new NBTItem(boots);
+                if (nbtBoots.hasKey("item")) {
+                    if (nbtBoots.hasKey("effects")) {
+                        String effectType = nbtBoots.getString("effects-type");
+                        if (!Objects.equals(effectType, "armor")) return;
+                        String list = nbtBoots.getString("effects-list");
+                        List<String> effectList = Arrays.asList(list.split(","));
+                        for (String effect : effectList) {
+                            String[] split = effect.split(":");
+                            PotionEffectType type = PotionEffectType.getByName(split[0]);
+                            Integer amplifier = Integer.parseInt(split[1]);
+                            player.addPotionEffect(type.createEffect(99999, amplifier));
+                        }
+                        effectsBoots.put(player.getUniqueId(), effectList);
+                    }
+                }
+            } else {
+                if (effectsBoots.containsKey(player.getUniqueId())) {
+                    try {
+                        for (String effect : effectsBoots.get(player.getUniqueId())) {
+                            String[] split = effect.split(":");
+                            PotionEffectType type = PotionEffectType.getByName(split[0]);
+                            player.removePotionEffect(type);
+                        }
+                        effectsBoots.remove(player.getUniqueId());
+                    } catch (NullPointerException ignored) {
+                    }
+                    effectsBoots.remove(player.getUniqueId());
+                }
             }
         }
     }

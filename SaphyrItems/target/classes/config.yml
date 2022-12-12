@@ -117,3 +117,102 @@ items:
       - "SPEED:1"
       - "FAST_DIGGING:1"
       - "JUMP:1"
+  helmet:
+    material: DIAMOND_HELMET
+    name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
+    infinite: true
+    unbreakable: false
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+      - ""
+      - "§7Le dieu §eCronos §7a décidé"
+      - "§7de vous donner sa §epioche §7 !"
+      - "§7Minez §eplus vite §7!"
+      - ""
+      - "§d» §7Propriétaire: §d§l%owner%"
+      - ""
+      - "§c§l✓ §cCassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DIG_SPEED:20"
+    effects: true
+    effects-type: "armor"
+    effects-list:
+      - "JUMP:0"
+  chestplate:
+    material: DIAMOND_CHESTPLATE
+    name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
+    infinite: true
+    unbreakable: false
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+      - ""
+      - "§7Le dieu §eCronos §7a décidé"
+      - "§7de vous donner sa §epioche §7 !"
+      - "§7Minez §eplus vite §7!"
+      - ""
+      - "§d» §7Propriétaire: §d§l%owner%"
+      - ""
+      - "§c§l✓ §cCassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DIG_SPEED:20"
+    effects: true
+    effects-type: "armor"
+    effects-list:
+      - "SPEED:1"
+  boots:
+    material: DIAMOND_BOOTS
+    name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
+    infinite: true
+    unbreakable: false
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+      - ""
+      - "§7Le dieu §eCronos §7a décidé"
+      - "§7de vous donner sa §epioche §7 !"
+      - "§7Minez §eplus vite §7!"
+      - ""
+      - "§d» §7Propriétaire: §d§l%owner%"
+      - ""
+      - "§c§l✓ §cCassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DIG_SPEED:20"
+    effects: true
+    effects-type: "armor"
+    effects-list:
+      - "FIRE_RESISTANCE:1"
+  chest2:
+    material: DIAMOND_CHESTPLATE
+    name: "§d§l⚡ §b§k!!§d§l Torse D'Hercule §b§k!!§d§l ⚡"
+    lore:
+      - "§f§m-----------------------------------"
+      - ""
+      - "§7Avec Des §bTétons §fSuper Solides"
+      - ""
+      - "§f§m-----------------------------------"
+    enchantments:
+      - "PROTECTION_ENVIRONMENTAL:3"
+      - "THORNS:1"
+  boots2:
+    material: GOLD_BOOTS
+    name: "§d§l⚡ §b§k!!§d§l Bottes De Sept Lieux §b§k!!§d§l ⚡"
+    lore:
+      - "§f§m-----------------------------------"
+      - ""
+      - "Des bottes pour allez super vite "
+      - ""
+      - "§f§m-----------------------------------"
+    enchantments:
+      - "PROTECTION_ENVIRONMENTAL:2"
+    effects: true
+    effects-type: "armor"
+    effects-list:
+      - "SPEED:1"
