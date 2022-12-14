@@ -42,7 +42,7 @@ public class CommandMenu implements Listener {
             ItemMeta itemMeta = itemStack.getItemMeta();
             itemMeta.setDisplayName(Config.getItemName(item));
             List<String> lore = Config.getItemLore(item);
-            Messages.replacePlaceHolders(lore, owner, null, null);
+            Messages.replacePlaceHolders(lore, owner, null, null, 1);
             itemMeta.setLore(lore);
             itemStack.setItemMeta(itemMeta);
             NBTItem nbtItem = new NBTItem(itemStack);

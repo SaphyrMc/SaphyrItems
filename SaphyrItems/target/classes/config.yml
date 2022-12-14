@@ -1,15 +1,15 @@
 items:
-  sword:
+  ancientsword:
     material: DIAMOND_SWORD
-    name: "§9§l❃ Epée Ancienne ❃"
+    name: "§9§l✻ Epée Ancienne ✻"
     infinite: true
-    unbreakable: true
+    unbreakable: false
     lore:
       - "§f§m-*---------------------------------*-"
       - "§c✯✯✯§7✯✯ §e§lRARE"
       - ""
-      - "§7Cette §9épée §7vous permettra de"
-      - "§7tuer vos §9ennemis §7plus §9rapidement §7!"
+      - "§7Cette §9épée rouillée §7vous"
+      - "§7assistera dans vos §9duels §7!"
       - ""
       - "§9» §7Propriétaire: §9§l%owner%"
       - ""
@@ -19,7 +19,8 @@ items:
     enchantments:
       - "DAMAGE_ALL:5"
       - "FIRE_ASPECT:2"
-  sword2:
+      - "DURABILITY:3"
+  antiquesword:
     material: DIAMOND_SWORD
     name: "§b§l❃ Epée Antique ❃"
     infinite: true
@@ -28,8 +29,8 @@ items:
       - "§f§m-*---------------------------------*-"
       - "§c✯✯✯✯§7✯ §d§lEPIQUE"
       - ""
-      - "§7Cette §bépée antique §7va annihiler"
-      - "§7vos §bennemis §7 !"
+      - "§7Cette §bépée perdue §7va §bannihiler"
+      - "§7tous vos §bennemis §7 !"
       - ""
       - "§b» §7Propriétaire: §b§l%owner%"
       - "§b» §7Victimes: §b§l%kills%"
@@ -40,7 +41,30 @@ items:
     enchantments:
       - "DAMAGE_ALL:5"
       - "FIRE_ASPECT:2"
-  sword3:
+  olympussword:
+    material: DIAMOND_SWORD
+    name: "§c§l⁂  Epée de l'Olympe ⁂"
+    infinite: true
+    unbreakable: true
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+      - ""
+      - "§7Cette épée provient du §cmont sacré"
+      - "§7des §cdieux !"
+      - "§7Ressentez sa §cpuissance §7 !"
+      - ""
+      - "§c» §7Propriétaire: §c§l%owner%"
+      - "§c» §7Victimes: §c§l%kills%"
+      - "§c» §7Dernier tué: §c§l%lastkill%"
+      - ""
+      - "§a§l✓ §aIncassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DAMAGE_ALL:5"
+      - "FIRE_ASPECT:2"
+  zeussword:
     material: DIAMOND_SWORD
     name: "§d§l⚡ §b§k!!§d§l Epée de Zeus §b§k!!§d§l ⚡"
     infinite: true
@@ -65,6 +89,184 @@ items:
     enchantments:
       - "DAMAGE_ALL:5"
       - "FIRE_ASPECT:2"
+  ancientbow:
+    material: BOW
+    name: "§9§l✻ Arc Ancien ✻"
+    infinite: true
+    unbreakable: false
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯§7✯✯ §e§lRARE"
+      - ""
+      - "§7Cet §9arc abimé §7vous aidera"
+      - "§7à fuir les §9embuscades §7!"
+      - ""
+      - "§9» §7Propriétaire: §9§l%owner%"
+      - ""
+      - "§c§l✗ §cCassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "ARROW_INFINITE:1"
+      - "ARROW_KNOCKBACK:2"
+      - "DURABILITY:3"
+  antiquebow:
+    material: BOW
+    name: "§b§l❃ Arc Antique ❃"
+    infinite: true
+    unbreakable: true
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯§7✯ §d§lEPIQUE"
+      - ""
+      - "§7Cet §barc des temps §banciens"
+      - "§baccompagnera §7votre §bpériple §7 !"
+      - ""
+      - "§b» §7Propriétaire: §b§l%owner%"
+      - "§b» §7Victimes: §b§l%kills%"
+      - ""
+      - "§a§l✓ §aIncassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "ARROW_INFINITE:1"
+      - "ARROW_KNOCKBACK:2"
+  olympusbow:
+    material: BOW
+    name: "§c§l⁂  Arc de l'Olympe ⁂"
+    infinite: true
+    unbreakable: true
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+      - ""
+      - "§7Cet arc est tombé du §cdomaine §7des"
+      - "§cdieux !"
+      - "§7Ressentez sa §cpuissance §7 !"
+      - ""
+      - "§c» §7Propriétaire: §c§l%owner%"
+      - "§c» §7Victimes: §c§l%kills%"
+      - "§c» §7Dernier tué: §c§l%lastkill%"
+      - ""
+      - "§a§l✓ §aIncassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "ARROW_INFINITE:1"
+      - "ARROW_KNOCKBACK:2"
+  artemisbow:
+    material: BOW
+    name: "§d§l⚡ §b§k!!§d§l Arc d'Artméis §b§k!!§d§l ⚡"
+    infinite: true
+    unbreakable: true
+    thor: true
+    thor-cooldown: 30
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+      - ""
+      - "§7La §ddéesse de la chasse §7vous a"
+      - "§doffert §7une partie de son §dâme §7!"
+      - "§7Cliquez droit pour invoquer la §dfoudre §7!"
+      - ""
+      - "§d» §7Propriétaire: §d§l%owner%"
+      - "§d» §7Victimes: §d§l%kills%"
+      - "§d» §7Dernier tué: §d§l%lastkill%"
+      - ""
+      - "§a§l✓ §aIncassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "ARROW_INFINITE:1"
+      - "ARROW_KNOCKBACK:3"
+  ancientrod:
+    material: FISHING_ROD
+    name: "§9§l✻ Rod Ancienne ✻"
+    infinite: true
+    unbreakable: false
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯§7✯✯ §e§lRARE"
+      - ""
+      - "§7Cette §9canne endommagée §7vous"
+      - "§7permet encore de §9pêcher §7vos ennemis !"
+      - ""
+      - "§9» §7Propriétaire: §9§l%owner%"
+      - ""
+      - "§c§l✗ §cCassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DURABILITY:3"
+  antiquerod:
+    material: FISHING_ROD
+    name: "§b§l❃ Rod Antique ❃"
+    infinite: true
+    unbreakable: true
+    hide: true
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯§7✯ §d§lEPIQUE"
+      - ""
+      - "§7Cette §bcanne arcanique §7va §bferrer"
+      - "§7vos §bassaillants §7!"
+      - ""
+      - "§b» §7Propriétaire: §b§l%owner%"
+      - "§b» §7Victimes: §b§l%kills%"
+      - ""
+      - "§a§l✓ §aIncassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DURABILITY:3"
+  olympusrod:
+    material: FISHING_ROD
+    name: "§c§l⁂  Rod de l'Olympe ⁂"
+    infinite: true
+    unbreakable: true
+    hide: true
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+      - ""
+      - "§7Cette canne descend de l'§cautel sacré"
+      - "§7des §cdieux !"
+      - "§7Ressentez sa §cpuissance §7 !"
+      - ""
+      - "§c» §7Propriétaire: §c§l%owner%"
+      - "§c» §7Victimes: §c§l%kills%"
+      - "§c» §7Dernier tué: §c§l%lastkill%"
+      - ""
+      - "§a§l✓ §aIncassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DURABILITY:3"
+  zeusrod:
+    material: FISHING_ROD
+    name: "§d§l⚡ §b§k!!§d§l Canne de Seth §b§k!!§d§l ⚡"
+    infinite: true
+    unbreakable: true
+    thor: true
+    thor-cooldown: 30
+    hide: true
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+      - ""
+      - "§7Le §ddieu rouge §7vous accompagne"
+      - "§7de part cet §dobjet mythique §7!"
+      - "§7Cliquez droit pour invoquer la §dfoudre §7!"
+      - ""
+      - "§d» §7Propriétaire: §d§l%owner%"
+      - "§d» §7Victimes: §d§l%kills%"
+      - "§d» §7Dernier tué: §d§l%lastkill%"
+      - ""
+      - "§a§l✓ §aIncassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DURABILITY:5"
   pioche:
     material: DIAMOND_PICKAXE
     name: "§c§l✿ §b§k!!§c§l Pioche de Ponos §b§k!!§c§l ✿"
@@ -79,140 +281,143 @@ items:
       - "§7Minez §cplus vite §7!"
       - ""
       - "§d» §7Propriétaire: §d§l%owner%"
+      - "§d» §7Blocs cassés: §d§l%blocks_broken%"
       - ""
       - "§c§l✗ §cCassable"
       - "§a§l✓ §aInfini"
       - "§f§m-*---------------------------------*-"
     enchantments:
-        - "DIG_SPEED:10"
-        - "DURABILITY:5"
+      - "DIG_SPEED:10"
+      - "DURABILITY:5"
+    breakblock: true
     effects: true
     effects-type: "hand"
     effects-list:
       - "SPEED:0"
       - "FAST_DIGGING:1"
-  pioche2:
-    material: DIAMOND_PICKAXE
-    name: "§e§l❂ §b§k!!§c§l Pioche de Cronos §b§k!!§e§l ❂"
-    infinite: true
-    unbreakable: false
-    lore:
-      - "§f§m-*---------------------------------*-"
-      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
-      - ""
-      - "§7Le dieu §eCronos §7a décidé"
-      - "§7de vous donner sa §epioche §7 !"
-      - "§7Minez §eplus vite §7!"
-      - ""
-      - "§d» §7Propriétaire: §d§l%owner%"
-      - ""
-      - "§c§l✓ §cCassable"
-      - "§a§l✓ §aInfini"
-      - "§f§m-*---------------------------------*-"
-    enchantments:
-      - "DIG_SPEED:20"
-    effects: true
-    effects-type: "hand"
-    effects-list:
-      - "SPEED:1"
-      - "FAST_DIGGING:1"
-      - "JUMP:1"
-  helmet:
-    material: DIAMOND_HELMET
-    name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
-    infinite: true
-    unbreakable: false
-    lore:
-      - "§f§m-*---------------------------------*-"
-      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
-      - ""
-      - "§7Le dieu §eCronos §7a décidé"
-      - "§7de vous donner sa §epioche §7 !"
-      - "§7Minez §eplus vite §7!"
-      - ""
-      - "§d» §7Propriétaire: §d§l%owner%"
-      - ""
-      - "§c§l✓ §cCassable"
-      - "§a§l✓ §aInfini"
-      - "§f§m-*---------------------------------*-"
-    enchantments:
-      - "DIG_SPEED:20"
-    effects: true
-    effects-type: "armor"
-    effects-list:
-      - "JUMP:0"
-  chestplate:
-    material: DIAMOND_CHESTPLATE
-    name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
-    infinite: true
-    unbreakable: false
-    lore:
-      - "§f§m-*---------------------------------*-"
-      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
-      - ""
-      - "§7Le dieu §eCronos §7a décidé"
-      - "§7de vous donner sa §epioche §7 !"
-      - "§7Minez §eplus vite §7!"
-      - ""
-      - "§d» §7Propriétaire: §d§l%owner%"
-      - ""
-      - "§c§l✓ §cCassable"
-      - "§a§l✓ §aInfini"
-      - "§f§m-*---------------------------------*-"
-    enchantments:
-      - "DIG_SPEED:20"
-    effects: true
-    effects-type: "armor"
-    effects-list:
-      - "SPEED:1"
-  boots:
-    material: DIAMOND_BOOTS
-    name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
-    infinite: true
-    unbreakable: false
-    lore:
-      - "§f§m-*---------------------------------*-"
-      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
-      - ""
-      - "§7Le dieu §eCronos §7a décidé"
-      - "§7de vous donner sa §epioche §7 !"
-      - "§7Minez §eplus vite §7!"
-      - ""
-      - "§d» §7Propriétaire: §d§l%owner%"
-      - ""
-      - "§c§l✓ §cCassable"
-      - "§a§l✓ §aInfini"
-      - "§f§m-*---------------------------------*-"
-    enchantments:
-      - "DIG_SPEED:20"
-    effects: true
-    effects-type: "armor"
-    effects-list:
-      - "FIRE_RESISTANCE:1"
-  chest2:
-    material: DIAMOND_CHESTPLATE
-    name: "§d§l⚡ §b§k!!§d§l Torse D'Hercule §b§k!!§d§l ⚡"
-    lore:
-      - "§f§m-----------------------------------"
-      - ""
-      - "§7Avec Des §bTétons §fSuper Solides"
-      - ""
-      - "§f§m-----------------------------------"
-    enchantments:
-      - "PROTECTION_ENVIRONMENTAL:3"
-      - "THORNS:1"
-  boots2:
-    material: GOLD_BOOTS
-    name: "§d§l⚡ §b§k!!§d§l Bottes De Sept Lieux §b§k!!§d§l ⚡"
-    lore:
-      - "§f§m-----------------------------------"
-      - ""
-      - "Des bottes pour allez super vite "
-      - ""
-      - "§f§m-----------------------------------"
-    enchantments:
-      - "PROTECTION_ENVIRONMENTAL:2"
-    effects: true
-    effects-type: "armor"
-    effects-list:
-      - "SPEED:1"
+  # pioche2:
+  #   material: DIAMOND_PICKAXE
+  #   name: "§e§l❂ §b§k!!§c§l Pioche de Cronos §b§k!!§e§l ❂"
+  #   infinite: true
+  #   unbreakable: false
+  #   lore:
+  #     - "§f§m-*---------------------------------*-"
+  #     - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+  #     - ""
+  #     - "§7Le dieu §eCronos §7a décidé"
+  #     - "§7de vous donner sa §epioche §7 !"
+  #     - "§7Minez §eplus vite §7!"
+  #     - ""
+  #     - "§d» §7Propriétaire: §d§l%owner%"
+  #     - ""
+  #     - "§c§l✓ §cCassable"
+  #     - "§a§l✓ §aInfini"
+  #     - "§f§m-*---------------------------------*-"
+  #   enchantments:
+  #     - "DIG_SPEED:20"
+  #   effects: true
+  #   effects-type: "hand"
+  #   effects-list:
+  #     - "SPEED:1"
+  #     - "FAST_DIGGING:1"
+  #     - "JUMP:1"
+  # helmet:
+  #   material: DIAMOND_HELMET
+  #   name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
+  #   infinite: true
+  #   unbreakable: false
+  #   lore:
+  #     - "§f§m-*---------------------------------*-"
+  #     - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+  #     - ""
+  #     - "§7Le dieu §eCronos §7a décidé"
+  #     - "§7de vous donner sa §epioche §7 !"
+  #     - "§7Minez §eplus vite §7!"
+  #     - ""
+  #     - "§d» §7Propriétaire: §d§l%owner%"
+  #     - ""
+  #     - "§c§l✓ §cCassable"
+  #     - "§a§l✓ §aInfini"
+  #     - "§f§m-*---------------------------------*-"
+  #   enchantments:
+  #     - "DIG_SPEED:20"
+  #   effects: true
+  #   effects-type: "armor"
+  #   effects-list:
+  #     - "JUMP:0"
+  # chestplate:
+  #   material: DIAMOND_CHESTPLATE
+  #   name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
+  #   infinite: true
+  #   unbreakable: false
+  #   lore:
+  #     - "§f§m-*---------------------------------*-"
+  #     - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+  #     - ""
+  #     - "§7Le dieu §eCronos §7a décidé"
+  #     - "§7de vous donner sa §epioche §7 !"
+  #     - "§7Minez §eplus vite §7!"
+  #     - ""
+  #     - "§d» §7Propriétaire: §d§l%owner%"
+  #     - ""
+  #     - "§c§l✓ §cCassable"
+  #     - "§a§l✓ §aInfini"
+  #     - "§f§m-*---------------------------------*-"
+  #   enchantments:
+  #     - "DIG_SPEED:20"
+  #   effects: true
+  #   effects-type: "armor"
+  #   effects-list:
+  #     - "SPEED:1"
+  # boots:
+  #   material: DIAMOND_BOOTS
+  #   name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
+  #   infinite: true
+  #   unbreakable: false
+  #   lore:
+  #     - "§f§m-*---------------------------------*-"
+  #     - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+  #     - ""
+  #     - "§7Le dieu §eCronos §7a décidé"
+  #     - "§7de vous donner sa §epioche §7 !"
+  #     - "§7Minez §eplus vite §7!"
+  #     - ""
+  #     - "§d» §7Propriétaire: §d§l%owner%"
+  #     - ""
+  #     - "§c§l✓ §cCassable"
+  #     - "§a§l✓ §aInfini"
+  #     - "§f§m-*---------------------------------*-"
+  #   enchantments:
+  #     - "DIG_SPEED:20"
+  #   effects: true
+  #   effects-type: "armor"
+  #   effects-list:
+  #     - "FIRE_RESISTANCE:1"
+  # chest2:
+  #   material: DIAMOND_CHESTPLATE
+  #   name: "§d§l⚡ §b§k!!§d§l Torse D'Hercule §b§k!!§d§l ⚡"
+  #   lore:
+  #     - "§f§m-----------------------------------"
+  #     - ""
+  #     - "§7Avec Des §bTétons §fSuper Solides"
+  #     - ""
+  #     - "§f§m-----------------------------------"
+  #   enchantments:
+  #     - "PROTECTION_ENVIRONMENTAL:3"
+  #     - "THORNS:1"
+  # boots2:
+  #   material: GOLD_BOOTS
+  #   name: "§d§l⚡ §b§k!!§d§l Bottes De Sept Lieux §b§k!!§d§l ⚡"
+  #   lore:
+  #     - "§f§m-----------------------------------"
+  #     - ""
+  #     - "Des bottes pour allez super vite "
+  #     - ""
+  #     - "§f§m-----------------------------------"
+  #   enchantments:
+  #     - "PROTECTION_ENVIRONMENTAL:2"
+  #   effects: true
+  #   effects-type: "armor"
+  #   effects-list:
+  #     - "SPEED:1"
+

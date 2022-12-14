@@ -101,4 +101,8 @@ public class Config {
     public static List<String> getEffectsList(String item) {
         return Main.getInstance().getConfig().getStringList("items." + item + ".effects-list");
     }
+
+    public static boolean isBlockBreakCounter(String item) {
+        return Main.getInstance().getConfig().getBoolean("items." + item + ".breakblock");
+    }
 }

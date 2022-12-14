@@ -2,6 +2,7 @@ package fr.ayato.saphyritems.listeners;
 
 import de.tr7zw.nbtapi.NBTItem;
 import fr.ayato.saphyritems.utils.Config;
+import fr.ayato.saphyritems.utils.Messages;
 import org.bukkit.Bukkit;
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -10,6 +11,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -166,6 +168,8 @@ public class PlayerEvents implements Listener {
         }
     }
 
+    //TO DO : OPTI
+    //quand on switch sur un item normal / de l'air ca clear
     @EventHandler
     public void holdItem(PlayerItemHeldEvent event) {
         Player player = event.getPlayer();
@@ -182,6 +186,17 @@ public class PlayerEvents implements Listener {
         }
         ItemStack current = player.getInventory().getItem(event.getNewSlot());
         NBTItem nbtItem = new NBTItem(current);
+        if (!nbtItem.hasKey("effects")) {
+            if (effectsHand.containsKey(player.getUniqueId())) {
+                for (String effect : effectsHand.get(player.getUniqueId())) {
+                    String[] split = effect.split(":");
+                    PotionEffectType type = PotionEffectType.getByName(split[0]);
+                    player.removePotionEffect(type);
+                }
+                effectsHand.remove(player.getUniqueId());
+            }
+            return;
+        }
         if (nbtItem.hasKey("item")) {
             try {
                 for (String effect : effectsHand.get(player.getUniqueId())) {
@@ -342,4 +357,27 @@ public class PlayerEvents implements Listener {
             }
         }
     }
+
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent event) {
+        ItemStack item = event.getPlayer().getItemInHand();
+        if (item.getType() == Material.AIR) return;
+        NBTItem nbtItem = new NBTItem(item);
+        if (nbtItem.hasKey("breakblock")) {
+            Integer counter = nbtItem.getInteger("breakblock");
+            counter = counter + 1;
+            nbtItem.setInteger("breakblock", counter);
+            nbtItem.applyNBT(item);
+            String itemName = nbtItem.getString("item");
+            List<String> lore = Config.getItemLore(itemName);
+            String owner = nbtItem.getString("owner");
+            Messages.replacePlaceHolders(lore, owner, null, null, counter);
+            ItemMeta meta = item.getItemMeta();
+            meta.setLore(lore);
+            item.setItemMeta(meta);
+            Player player = event.getPlayer();
+            player.setItemInHand(item);
+        }
+    }
+
 }

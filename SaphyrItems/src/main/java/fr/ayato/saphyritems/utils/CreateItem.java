@@ -22,12 +22,13 @@ public class CreateItem {
         boolean isThor = Config.isThor(item);
         boolean isWither = Config.isWither(item);
         boolean isEffect = Config.isGiveEffects(item);
+        boolean isBlockBreakCounter = Config.isBlockBreakCounter(item);
 
         ItemStack itemStack = new ItemStack(Material.getMaterial(itemMaterial));
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(itemName);
 
-        Messages.replacePlaceHolders(itemLore, playerName, null, null);
+        Messages.replacePlaceHolders(itemLore, playerName, null, null, 1);
         itemMeta.setLore(itemLore);
 
         for (String enchant : itemEnchants) {
@@ -76,6 +77,11 @@ public class CreateItem {
             String effectType = Config.getEffectsType(item);
             nbtItem.setString("effects-list", effectsString);
             nbtItem.setString("effects-type", effectType);
+        }
+
+        if (isBlockBreakCounter) {
+            nbtItem.setBoolean("breakblock", true);
+            nbtItem.setInteger("breakblock-counter", 0);
         }
 
         nbtItem.setString("owner", playerName);
