@@ -71,6 +71,6 @@ public class NBTBuilder {
     }
 
     public static void setLastKill(NBTItem nbtItem, String lastkill) {
-        nbtItem.setString("lastkill", lastkill);
+        nbtItem.setString("last-kill", lastkill);
     }
 }
