@@ -355,8 +355,8 @@ public class PlayerEvents implements Listener {
         }
     }
 
-        @EventHandler
-        public void onDamageTaken(EntityDamageByEntityEvent event) {
+    @EventHandler
+    public void onDamageTaken(EntityDamageByEntityEvent event) {
             if (event.getDamager() instanceof Player) {
                 Player damager = (Player) event.getDamager();
                 ItemStack item = damager.getInventory().getItemInHand();
@@ -365,7 +365,6 @@ public class PlayerEvents implements Listener {
                 if (nbtItem.hasKey("countdamage")) {
                     double damage = event.getDamage();
                     String damageString = String.valueOf(nbtItem.getInteger("damage-counter"));
-                    System.out.println("damageString = " + damageString);
                     double damageCounter = Double.parseDouble(damageString);
                     double newDamage = damageCounter + damage;
                     nbtItem.setInteger("damage-counter", (int) newDamage);
@@ -382,7 +381,6 @@ public class PlayerEvents implements Listener {
                 }
             }
         }
-
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
@@ -406,4 +404,12 @@ public class PlayerEvents implements Listener {
         }
     }
 
+    @EventHandler
+    public void onDrop(PlayerDropItemEvent event) {
+        ItemStack item = event.getItemDrop().getItemStack();
+        NBTItem nbtItem = new NBTItem(item);
+        if (nbtItem.hasKey("item")) {
+            event.setCancelled(true);
+        }
+    }
 }
