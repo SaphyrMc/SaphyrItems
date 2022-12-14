@@ -29,7 +29,7 @@ public class Messages {
         return helpMessage;
     }
 
-    public static void replacePlaceHolders(List<String> lore, String owner, String kills, String lastPlayerKilled, Integer blockbroken) {
+    public static void replacePlaceHolders(List<String> lore, String owner, String kills, String lastPlayerKilled, Integer blockbroken, Integer damageDealt) {
         if (kills == null) {
             kills = "0";
         }
@@ -39,12 +39,18 @@ public class Messages {
         if (blockbroken == null) {
             blockbroken = 0;
         }
+
+        if (damageDealt == null) {
+            damageDealt = 0;
+        }
+
         for (int i = 0; i < lore.size(); i++) {
             try {
                 lore.set(i, lore.get(i).replace("%owner%", owner));
                 lore.set(i, lore.get(i).replace("%kills%", kills));
                 lore.set(i, lore.get(i).replace("%lastkill%", lastPlayerKilled));
                 lore.set(i, lore.get(i).replace("%blocks_broken%", String.valueOf(blockbroken)));
+                lore.set(i, lore.get(i).replace("%damage_dealt%", String.valueOf(damageDealt)));
             } catch (Exception e) {
                 e.printStackTrace();
             }

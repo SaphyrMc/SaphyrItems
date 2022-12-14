@@ -105,4 +105,12 @@ public class Config {
     public static boolean isBlockBreakCounter(String item) {
         return Main.getInstance().getConfig().getBoolean("items." + item + ".breakblock");
     }
+
+    public static boolean isNoFallDamage(String item) {
+        return Main.getInstance().getConfig().getBoolean("items." + item + ".nofall");
+    }
+
+    public static boolean isDamageCounter(String item) {
+        return Main.getInstance().getConfig().getBoolean("items." + item + ".countdamage");
+    }
 }

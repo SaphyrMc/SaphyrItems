@@ -9,9 +9,12 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
@@ -95,7 +98,7 @@ public class PlayerEvents implements Listener {
                     kills++;
                     nbtItem.setString("kills", String.valueOf(kills));
                     killer.setItemInHand(nbtItem.getItem());
-                    Messages.replacePlaceHolders(lore, owner, String.valueOf(kills), victimName, null);
+                    Messages.replacePlaceHolders(lore, owner, String.valueOf(kills), victimName, null, null);
                     meta.setLore(lore);
                     killer.getItemInHand().setItemMeta(meta);
                     killer.updateInventory();
@@ -186,12 +189,11 @@ public class PlayerEvents implements Listener {
             String[] split = effect.split(":");
             PotionEffectType type = PotionEffectType.getByName(split[0]);
             Integer amplifier = Integer.parseInt(split[1]);
-            player.addPotionEffect(type.createEffect(99999, amplifier));
+            player.addPotionEffect(type.createEffect(Integer.MAX_VALUE, amplifier));
         }
         effectsHand.put(player.getUniqueId(), effectList);
     }
 
-    //TO DO : OPTIMIZE
     @EventHandler
     public void setArmor(PlayerMoveEvent event) {
         if (event.getPlayer() != null) {
@@ -212,7 +214,7 @@ public class PlayerEvents implements Listener {
                             String[] split = effect.split(":");
                             PotionEffectType type = PotionEffectType.getByName(split[0]);
                             Integer amplifier = Integer.parseInt(split[1]);
-                            player.addPotionEffect(type.createEffect(99999, amplifier));
+                            player.addPotionEffect(type.createEffect(Integer.MAX_VALUE, amplifier));
                         }
                         effectsHelmet.put(player.getUniqueId(), effectList);
                     }
@@ -243,7 +245,7 @@ public class PlayerEvents implements Listener {
                             String[] split = effect.split(":");
                             PotionEffectType type = PotionEffectType.getByName(split[0]);
                             Integer amplifier = Integer.parseInt(split[1]);
-                            player.addPotionEffect(type.createEffect(99999, amplifier));
+                            player.addPotionEffect(type.createEffect(Integer.MAX_VALUE, amplifier));
                         }
                         effectsChestplate.put(player.getUniqueId(), effectList);
                     }
@@ -274,7 +276,7 @@ public class PlayerEvents implements Listener {
                             String[] split = effect.split(":");
                             PotionEffectType type = PotionEffectType.getByName(split[0]);
                             Integer amplifier = Integer.parseInt(split[1]);
-                            player.addPotionEffect(type.createEffect(99999, amplifier));
+                            player.addPotionEffect(type.createEffect(Integer.MAX_VALUE, amplifier));
                         }
                         effectsLeggings.put(player.getUniqueId(), effectList);
                     }
@@ -305,7 +307,7 @@ public class PlayerEvents implements Listener {
                             String[] split = effect.split(":");
                             PotionEffectType type = PotionEffectType.getByName(split[0]);
                             Integer amplifier = Integer.parseInt(split[1]);
-                            player.addPotionEffect(type.createEffect(99999, amplifier));
+                            player.addPotionEffect(type.createEffect(Integer.MAX_VALUE, amplifier));
                         }
                         effectsBoots.put(player.getUniqueId(), effectList);
                     }
@@ -328,6 +330,61 @@ public class PlayerEvents implements Listener {
     }
 
     @EventHandler
+    public void onDamage(EntityDamageEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            if (event.getCause() == EntityDamageEvent.DamageCause.FALL) {
+                ItemStack helmet = player.getInventory().getHelmet();
+                ItemStack chestplate = player.getInventory().getChestplate();
+                ItemStack leggings = player.getInventory().getLeggings();
+                ItemStack boots = player.getInventory().getBoots();
+                List<ItemStack> armor = new ArrayList<>();
+                if (helmet != null) armor.add(helmet);
+                if (chestplate != null) armor.add(chestplate);
+                if (leggings != null) armor.add(leggings);
+                if (boots != null) armor.add(boots);
+                for (ItemStack itemStack : armor) {
+                    if (itemStack != null) {
+                        NBTItem nbtItem = new NBTItem(itemStack);
+                        if (nbtItem.hasKey("nofall")) {
+                            event.setCancelled(true);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+        @EventHandler
+        public void onDamageTaken(EntityDamageByEntityEvent event) {
+            if (event.getDamager() instanceof Player) {
+                Player damager = (Player) event.getDamager();
+                ItemStack item = damager.getInventory().getItemInHand();
+                if (item == null || item.getType() == Material.AIR) return;
+                NBTItem nbtItem = new NBTItem(item);
+                if (nbtItem.hasKey("countdamage")) {
+                    double damage = event.getDamage();
+                    String damageString = String.valueOf(nbtItem.getInteger("damage-counter"));
+                    System.out.println("damageString = " + damageString);
+                    double damageCounter = Double.parseDouble(damageString);
+                    double newDamage = damageCounter + damage;
+                    nbtItem.setInteger("damage-counter", (int) newDamage);
+                    nbtItem.applyNBT(item);
+                    String itemName = nbtItem.getString("item");
+                    String owner = nbtItem.getString("owner");
+                    Integer kills = nbtItem.getInteger("kills");
+                    List<String> lore = Config.getItemLore(itemName);
+                    Messages.replacePlaceHolders(lore, owner, String.valueOf(kills), null, null,(int) newDamage);
+                    ItemMeta meta = item.getItemMeta();
+                    meta.setLore(lore);
+                    item.setItemMeta(meta);
+                    damager.updateInventory();
+                }
+            }
+        }
+
+
+    @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         ItemStack item = event.getPlayer().getItemInHand();
         if (item.getType() == Material.AIR) return;
@@ -340,12 +397,12 @@ public class PlayerEvents implements Listener {
             String itemName = nbtItem.getString("item");
             List<String> lore = Config.getItemLore(itemName);
             String owner = nbtItem.getString("owner");
-            Messages.replacePlaceHolders(lore, owner, null, null, counter);
+            Messages.replacePlaceHolders(lore, owner, null, null, counter, null);
             ItemMeta meta = item.getItemMeta();
             meta.setLore(lore);
             item.setItemMeta(meta);
             Player player = event.getPlayer();
-            player.setItemInHand(item);
+            player.updateInventory();
         }
     }
 

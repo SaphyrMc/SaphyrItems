@@ -68,6 +68,7 @@ items:
     material: DIAMOND_SWORD
     name: "§d§l⚡ §b§k!!§d§l Epée de Zeus §b§k!!§d§l ⚡"
     infinite: true
+    countdamage: true
     unbreakable: true
     thor: true
     thor-cooldown: 30
@@ -81,6 +82,7 @@ items:
       - ""
       - "§d» §7Propriétaire: §d§l%owner%"
       - "§d» §7Victimes: §d§l%kills%"
+      - "§d» §7Dégats: §d§l%damage_dealt%"
       - "§d» §7Dernier tué: §d§l%lastkill%"
       - ""
       - "§a§l✓ §aIncassable"
@@ -295,6 +297,31 @@ items:
     effects-list:
       - "SPEED:0"
       - "FAST_DIGGING:1"
+  helmet:
+    material: DIAMOND_HELMET
+    name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
+    infinite: true
+    unbreakable: false
+    lore:
+      - "§f§m-*---------------------------------*-"
+      - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
+      - ""
+      - "§7Le dieu §eCronos §7a décidé"
+      - "§7de vous donner sa §epioche §7 !"
+      - "§7Minez §eplus vite §7!"
+      - ""
+      - "§d» §7Propriétaire: §d§l%owner%"
+      - ""
+      - "§c§l✓ §cCassable"
+      - "§a§l✓ §aInfini"
+      - "§f§m-*---------------------------------*-"
+    enchantments:
+      - "DIG_SPEED:20"
+    nofall: true
+    effects: true
+    effects-type: "armor"
+    effects-list:
+      - "JUMP:0"
   # pioche2:
   #   material: DIAMOND_PICKAXE
   #   name: "§e§l❂ §b§k!!§c§l Pioche de Cronos §b§k!!§e§l ❂"
@@ -321,30 +348,6 @@ items:
   #     - "SPEED:1"
   #     - "FAST_DIGGING:1"
   #     - "JUMP:1"
-  # helmet:
-  #   material: DIAMOND_HELMET
-  #   name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
-  #   infinite: true
-  #   unbreakable: false
-  #   lore:
-  #     - "§f§m-*---------------------------------*-"
-  #     - "§c✯✯✯✯✯ §c§lLEGENDAIRE"
-  #     - ""
-  #     - "§7Le dieu §eCronos §7a décidé"
-  #     - "§7de vous donner sa §epioche §7 !"
-  #     - "§7Minez §eplus vite §7!"
-  #     - ""
-  #     - "§d» §7Propriétaire: §d§l%owner%"
-  #     - ""
-  #     - "§c§l✓ §cCassable"
-  #     - "§a§l✓ §aInfini"
-  #     - "§f§m-*---------------------------------*-"
-  #   enchantments:
-  #     - "DIG_SPEED:20"
-  #   effects: true
-  #   effects-type: "armor"
-  #   effects-list:
-  #     - "JUMP:0"
   # chestplate:
   #   material: DIAMOND_CHESTPLATE
   #   name: "§e§l❂ §b§k!!§c§l Casque d'Artémis §b§k!!§e§l ❂"
