@@ -1,9 +1,12 @@
 fr\ayato\saphyritems\listeners\PlayerEvents$1.class
-fr\ayato\saphyritems\commands\GiveItems.class
-fr\ayato\saphyritems\listeners\PlayerEvents.class
-fr\ayato\saphyritems\utils\CreateItem.class
 fr\ayato\saphyritems\utils\Messages.class
-fr\ayato\saphyritems\utils\Config.class
 fr\ayato\saphyritems\inventories\InventoryInstance.class
+fr\ayato\saphyritems\builder\ItemBuilder.class
+fr\ayato\saphyritems\listeners\PlayerEvents.class
+fr\ayato\saphyritems\listeners\InventoryEvents.class
+fr\ayato\saphyritems\utils\Config.class
+fr\ayato\saphyritems\builder\NBTBuilder.class
+fr\ayato\saphyritems\commands\SaphyrHelp.class
+fr\ayato\saphyritems\listeners\ItemEvents.class
 fr\ayato\saphyritems\Main.class
 fr\ayato\saphyritems\inventories\CommandMenu.class

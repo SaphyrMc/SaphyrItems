@@ -1,7 +1,9 @@
 package fr.ayato.saphyritems;
 
-import fr.ayato.saphyritems.commands.GiveItems;
+import fr.ayato.saphyritems.commands.SaphyrHelp;
 import fr.ayato.saphyritems.inventories.CommandMenu;
+import fr.ayato.saphyritems.listeners.InventoryEvents;
+import fr.ayato.saphyritems.listeners.ItemEvents;
 import fr.ayato.saphyritems.listeners.PlayerEvents;
 import fr.ayato.saphyritems.utils.Config;
 import fr.ayato.saphyritems.utils.Messages;
@@ -15,9 +17,6 @@ import java.util.List;
 public class Main extends JavaPlugin {
     public static List<String> configItems = new ArrayList<>();
 
-    public static Messages messages = new Messages();
-
-
     public static Main getInstance() {
         return JavaPlugin.getPlugin(Main.class);
     }
@@ -27,9 +26,10 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         Bukkit.getServer().getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "[on] " + ChatColor.AQUA + "SaphyrItems Enabled !" + ChatColor.LIGHT_PURPLE + " [on]");
-        getCommand("sitems").setExecutor(new GiveItems(this));
+        getCommand("sitems").setExecutor(new SaphyrHelp(this));
         getServer().getPluginManager().registerEvents(new PlayerEvents(), this);
-        getServer().getPluginManager().registerEvents(new CommandMenu(), this);
+        getServer().getPluginManager().registerEvents(new ItemEvents(), this);
+        getServer().getPluginManager().registerEvents(new InventoryEvents(), this);
         configItems = Config.getAllItems();
         CommandMenu.initCommandGui();
         Messages.setHelpMessage(Messages.helpMessage);

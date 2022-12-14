@@ -2,25 +2,20 @@ package fr.ayato.saphyritems.commands;
 
 import fr.ayato.saphyritems.Main;
 import fr.ayato.saphyritems.inventories.CommandMenu;
-import fr.ayato.saphyritems.utils.Config;
-import fr.ayato.saphyritems.utils.CreateItem;
+import fr.ayato.saphyritems.builder.ItemBuilder;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
-import javax.swing.*;
-import java.util.List;
-import java.util.Objects;
-
-public class GiveItems implements CommandExecutor {
+public class SaphyrHelp implements CommandExecutor {
 
     // Plugin
     private final Main plugin;
-    public GiveItems(Main main) {
+    public SaphyrHelp(Main main) {
         this.plugin = main;
     }
 
@@ -39,7 +34,7 @@ public class GiveItems implements CommandExecutor {
                     if (!Bukkit.getOnlinePlayers().contains(player)) return false;
                     final int number = Integer.parseInt(args[3]);
                     for (int i = 0; i < number; i++) {
-                        player.getInventory().addItem(CreateItem.data(item, args[1]));
+                        player.getInventory().addItem(ItemBuilder.data(item, args[1]));
                     }
                     player.updateInventory();
                 }

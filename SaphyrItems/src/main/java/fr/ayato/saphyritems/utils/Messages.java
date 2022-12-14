@@ -29,7 +29,7 @@ public class Messages {
         return helpMessage;
     }
 
-    public static void replacePlaceHolders(List<String> lore, String owner, String kills, String lastPlayerKilled, Integer blockbroken, Integer damageDealt) {
+    public static void replaceAllPlaceHolders(List<String> lore, String owner, String kills, String lastPlayerKilled, Integer blockbroken, Integer damageDealt) {
         if (kills == null) {
             kills = "0";
         }
@@ -50,6 +50,56 @@ public class Messages {
                 lore.set(i, lore.get(i).replace("%kills%", kills));
                 lore.set(i, lore.get(i).replace("%lastkill%", lastPlayerKilled));
                 lore.set(i, lore.get(i).replace("%blocks_broken%", String.valueOf(blockbroken)));
+                lore.set(i, lore.get(i).replace("%damage_dealt%", String.valueOf(damageDealt)));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void replaceOwnerPlaceHolder(List<String> lore, String owner) {
+        for (int i = 0; i < lore.size(); i++) {
+            try {
+                lore.set(i, lore.get(i).replace("%owner%", owner));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void replaceKillsPlaceHolder(List<String> lore, String kills) {
+        for (int i = 0; i < lore.size(); i++) {
+            try {
+                lore.set(i, lore.get(i).replace("%kills%", kills));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void replaceLastKillPlaceHolder(List<String> lore, String lastPlayerKilled) {
+        for (int i = 0; i < lore.size(); i++) {
+            try {
+                lore.set(i, lore.get(i).replace("%lastkill%", lastPlayerKilled));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void replaceBlocksBrokenPlaceHolder(List<String> lore, Integer blockbroken) {
+        for (int i = 0; i < lore.size(); i++) {
+            try {
+                lore.set(i, lore.get(i).replace("%blocks_broken%", String.valueOf(blockbroken)));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void replaceDamageDealtPlaceHolder(List<String> lore, Integer damageDealt) {
+        for (int i = 0; i < lore.size(); i++) {
+            try {
                 lore.set(i, lore.get(i).replace("%damage_dealt%", String.valueOf(damageDealt)));
             } catch (Exception e) {
                 e.printStackTrace();
