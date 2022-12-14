@@ -36,6 +36,9 @@ public class Messages {
         if (lastPlayerKilled == null) {
             lastPlayerKilled = "Aucun";
         }
+        if (blockbroken == null) {
+            blockbroken = 0;
+        }
         for (int i = 0; i < lore.size(); i++) {
             try {
                 lore.set(i, lore.get(i).replace("%owner%", owner));

@@ -28,7 +28,7 @@ public class CreateItem {
         ItemMeta itemMeta = itemStack.getItemMeta();
         itemMeta.setDisplayName(itemName);
 
-        Messages.replacePlaceHolders(itemLore, playerName, null, null, 1);
+        Messages.replacePlaceHolders(itemLore, playerName, null, null, null);
         itemMeta.setLore(itemLore);
 
         for (String enchant : itemEnchants) {

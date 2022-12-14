@@ -81,30 +81,22 @@ public class PlayerEvents implements Listener {
 
     @EventHandler
     public void onKill(PlayerDeathEvent event) {
-        Player player = event.getEntity();
-        Player killer = player.getKiller();
+        Player victim = event.getEntity();
+        Player killer = victim.getKiller();
         if (killer != null) {
             NBTItem nbtItem = new NBTItem(killer.getItemInHand());
             if (nbtItem.hasKey("item")) {
                 if (nbtItem.hasKey("kills")) {
-                    int kills = Integer.parseInt(nbtItem.getString("kills"));
+                    Integer kills = Integer.parseInt(nbtItem.getString("kills"));
+                    String owner = nbtItem.getString("owner");
+                    String victimName = victim.getName();
+                    ItemMeta meta = killer.getItemInHand().getItemMeta();
+                    List<String> lore = Config.getItemLore(nbtItem.getString("item"));
                     kills++;
                     nbtItem.setString("kills", String.valueOf(kills));
                     killer.setItemInHand(nbtItem.getItem());
-                    ItemMeta meta = killer.getItemInHand().getItemMeta();
-                    List<String> lore = Config.getItemLore(nbtItem.getString("item"));
-                    List<String> newLore = new ArrayList<>();
-                    for (String line : lore) {
-                        if (line.contains("%kills%")) {
-                            line = line.replace("%kills%", String.valueOf(kills));
-                        } else if (line.contains("%owner%")) {
-                            line = line.replace("%owner%", nbtItem.getString("owner"));
-                        } else if (line.contains("%lastkill%")) {
-                            line = line.replace("%lastkill%", player.getName());
-                        }
-                        newLore.add(line);
-                    }
-                    meta.setLore(newLore);
+                    Messages.replacePlaceHolders(lore, owner, String.valueOf(kills), victimName, null);
+                    meta.setLore(lore);
                     killer.getItemInHand().setItemMeta(meta);
                     killer.updateInventory();
                 }
@@ -364,9 +356,9 @@ public class PlayerEvents implements Listener {
         if (item.getType() == Material.AIR) return;
         NBTItem nbtItem = new NBTItem(item);
         if (nbtItem.hasKey("breakblock")) {
-            Integer counter = nbtItem.getInteger("breakblock");
+            Integer counter = nbtItem.getInteger("breakblock-counter");
             counter = counter + 1;
-            nbtItem.setInteger("breakblock", counter);
+            nbtItem.setInteger("breakblock-counter", counter);
             nbtItem.applyNBT(item);
             String itemName = nbtItem.getString("item");
             List<String> lore = Config.getItemLore(itemName);
