@@ -4,6 +4,7 @@ import de.tr7zw.nbtapi.NBTItem;
 import fr.ayato.saphyritems.utils.Config;
 import fr.ayato.saphyritems.utils.Messages;
 import org.bukkit.Material;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -67,8 +68,7 @@ public class PlayerEvents implements Listener {
     @EventHandler
     public void onPlayerKill(PlayerDeathEvent event) {
         Player victim = event.getEntity();
-        //check if the victim is not a player
-        if (victim == null) return;
+        if (victim.getType() != EntityType.PLAYER) return;
         Player killer = victim.getKiller();
         if (killer != null) {
             NBTItem nbtItem = new NBTItem(killer.getItemInHand());
@@ -81,6 +81,7 @@ public class PlayerEvents implements Listener {
                     List<String> lore = Config.getItemLore(nbtItem.getString("saphyr-item"));
                     kills++;
                     nbtItem.setString("kills", String.valueOf(kills));
+                    nbtItem.setString("last-kill", lastKill);
                     killer.setItemInHand(nbtItem.getItem());
                     Messages.replaceOwnerPlaceHolder(lore, owner);
                     Messages.replaceKillsPlaceHolder(lore, String.valueOf(kills));
@@ -136,10 +137,12 @@ public class PlayerEvents implements Listener {
                     String itemName = nbtItem.getString("saphyr-item");
                     String owner = nbtItem.getString("owner");
                     Integer kills = nbtItem.getInteger("kills");
+                    String lastKill = nbtItem.getString("last-kill");
                     List<String> lore = Config.getItemLore(itemName);
                     Messages.replaceOwnerPlaceHolder(lore, owner);
                     Messages.replaceKillsPlaceHolder(lore, String.valueOf(kills));
                     Messages.replaceDamageDealtPlaceHolder(lore, (int) newDamage);
+                    Messages.replaceLastKillPlaceHolder(lore, lastKill);
                     ItemMeta meta = item.getItemMeta();
                     meta.setLore(lore);
                     item.setItemMeta(meta);

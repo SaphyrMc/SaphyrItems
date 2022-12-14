@@ -50,7 +50,6 @@ public class InventoryEvents implements Listener {
                         Player player = (Player) event.getWhoClicked();
                         ItemStack itemStack = ItemBuilder.data(item, player.getName());
                         NBTItem nbtItem1 = new NBTItem(itemStack);
-                        System.out.println("ITEM GIVE : " + nbtItem1.toString());
                         player.getInventory().addItem(ItemBuilder.data(item, player.getName()));
                         player.updateInventory();
                     }

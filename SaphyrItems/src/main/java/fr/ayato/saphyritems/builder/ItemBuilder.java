@@ -60,10 +60,9 @@ public class ItemBuilder {
         NBTBuilder.setDamageCounter(nbtItem, isDamageCounter, 0);
         NBTBuilder.setKillCounter(nbtItem, 0);
         NBTBuilder.setRandomString(nbtItem);
+        NBTBuilder.setLastKill(nbtItem, "Aucun");
         nbtItem.applyNBT(itemStack);
 
-
-        System.out.println("item build : " + nbtItem.toString());
         return itemStack;
     }
 }

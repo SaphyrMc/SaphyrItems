@@ -69,4 +69,8 @@ public class NBTBuilder {
         itemStack.setString("effects-list", effectsString);
         itemStack.setString("effects-type", effectType);
     }
+
+    public static void setLastKill(NBTItem nbtItem, String lastkill) {
+        nbtItem.setString("lastkill", lastkill);
+    }
 }
