@@ -160,61 +160,38 @@ public class PlayerEvents implements Listener {
         }
     }
 
-    //TO DO : OPTI
-    //quand on switch sur un item normal / de l'air ca clear
     @EventHandler
     public void holdItem(PlayerItemHeldEvent event) {
         Player player = event.getPlayer();
-        if (player.getInventory().getItem(event.getNewSlot()) == null || player.getInventory().getItem(event.getNewSlot()).getType() == Material.AIR) {
-            if (effectsHand.containsKey(player.getUniqueId())) {
-                for (String effect : effectsHand.get(player.getUniqueId())) {
-                    String[] split = effect.split(":");
-                    PotionEffectType type = PotionEffectType.getByName(split[0]);
-                    player.removePotionEffect(type);
-                }
-                effectsHand.remove(player.getUniqueId());
+        if (effectsHand.containsKey(player.getUniqueId())) {
+            for (String effect : effectsHand.get(player.getUniqueId())) {
+                String[] split = effect.split(":");
+                PotionEffectType type = PotionEffectType.getByName(split[0]);
+                player.removePotionEffect(type);
             }
-            return;
+            effectsHand.remove(player.getUniqueId());
         }
-        ItemStack current = player.getInventory().getItem(event.getNewSlot());
-        NBTItem nbtItem = new NBTItem(current);
-        if (!nbtItem.hasKey("effects")) {
-            if (effectsHand.containsKey(player.getUniqueId())) {
-                for (String effect : effectsHand.get(player.getUniqueId())) {
-                    String[] split = effect.split(":");
-                    PotionEffectType type = PotionEffectType.getByName(split[0]);
-                    player.removePotionEffect(type);
-                }
-                effectsHand.remove(player.getUniqueId());
-            }
-            return;
+        if (player.getInventory().getItem(event.getNewSlot()) == null) return;
+        if (player.getInventory().getItem(event.getNewSlot()).getType() == Material.AIR) return;
+
+        NBTItem nbtItem = new NBTItem(player.getInventory().getItem(event.getNewSlot()));
+        if (!nbtItem.hasKey("effects")) return;
+
+        String effectType = nbtItem.getString("effects-type");
+        if (!Objects.equals(effectType, "hand")) return;
+
+        String list = nbtItem.getString("effects-list");
+        List<String> effectList = Arrays.asList(list.split(","));
+        for (String effect : effectList) {
+            String[] split = effect.split(":");
+            PotionEffectType type = PotionEffectType.getByName(split[0]);
+            Integer amplifier = Integer.parseInt(split[1]);
+            player.addPotionEffect(type.createEffect(99999, amplifier));
         }
-        if (nbtItem.hasKey("item")) {
-            try {
-                for (String effect : effectsHand.get(player.getUniqueId())) {
-                    String[] split = effect.split(":");
-                    PotionEffectType type = PotionEffectType.getByName(split[0]);
-                    player.removePotionEffect(type);
-                }
-                effectsHand.remove(player.getUniqueId());
-            } catch (NullPointerException ignored) {
-            }
-            if (nbtItem.hasKey("effects")) {
-                String effectType = nbtItem.getString("effects-type");
-                if (!Objects.equals(effectType, "hand")) return;
-                String list = nbtItem.getString("effects-list");
-                List<String> effectList = Arrays.asList(list.split(","));
-                for (String effect : effectList) {
-                    String[] split = effect.split(":");
-                    PotionEffectType type = PotionEffectType.getByName(split[0]);
-                    Integer amplifier = Integer.parseInt(split[1]);
-                    player.addPotionEffect(type.createEffect(99999, amplifier));
-                }
-                effectsHand.put(player.getUniqueId(), effectList);
-            }
-        }
+        effectsHand.put(player.getUniqueId(), effectList);
     }
 
+    //TO DO : OPTIMIZE
     @EventHandler
     public void setArmor(PlayerMoveEvent event) {
         if (event.getPlayer() != null) {
