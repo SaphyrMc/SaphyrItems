@@ -51,7 +51,7 @@ public class CommandMenu implements Listener {
     }
 
     public static Inventory createGlassGui() {
-        Inventory inv = Bukkit.createInventory(null, 27, "§d§l⚡ §b§lSaphyrItems");
+        Inventory inv = Bukkit.createInventory(null, 54, "§d§l⚡ §b§lSaphyrItems");
         InventoryInstance.addGlass(inv, 0, Material.STAINED_GLASS_PANE, " ");
         InventoryInstance.addGlass(inv, 1, Material.STAINED_GLASS_PANE, " ");
         InventoryInstance.addGlass(inv, 9, Material.STAINED_GLASS_PANE, " ");
@@ -60,11 +60,13 @@ public class CommandMenu implements Listener {
         InventoryInstance.addGlass(inv, 8, Material.STAINED_GLASS_PANE, " ");
         InventoryInstance.addGlass(inv, 17, Material.STAINED_GLASS_PANE, " ");
 
-        InventoryInstance.addGlass(inv, 18, Material.STAINED_GLASS_PANE, " ");
-        InventoryInstance.addGlass(inv, 19, Material.STAINED_GLASS_PANE, " ");
+        InventoryInstance.addGlass(inv, 45, Material.STAINED_GLASS_PANE, " ");
+        InventoryInstance.addGlass(inv, 46, Material.STAINED_GLASS_PANE, " ");
+        InventoryInstance.addGlass(inv, 36, Material.STAINED_GLASS_PANE, " ");
 
-        InventoryInstance.addGlass(inv, 25, Material.STAINED_GLASS_PANE, " ");
-        InventoryInstance.addGlass(inv, 26, Material.STAINED_GLASS_PANE, " ");
+        InventoryInstance.addGlass(inv, 44, Material.STAINED_GLASS_PANE, " ");
+        InventoryInstance.addGlass(inv, 53, Material.STAINED_GLASS_PANE, " ");
+        InventoryInstance.addGlass(inv, 52, Material.STAINED_GLASS_PANE, " ");
         return inv;
     }
 }
