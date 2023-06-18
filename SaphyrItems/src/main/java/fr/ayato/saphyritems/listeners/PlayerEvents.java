@@ -74,13 +74,13 @@ public class PlayerEvents implements Listener {
             NBTItem nbtItem = new NBTItem(killer.getItemInHand());
             if (nbtItem.hasKey("saphyr-item")) {
                 if (nbtItem.hasKey("kills")) {
-                    Integer kills = Integer.parseInt(nbtItem.getString("kills"));
+                    Integer kills = nbtItem.getInteger("kills");
                     String owner = nbtItem.getString("owner");
                     String lastKill = victim.getName();
                     ItemMeta meta = killer.getItemInHand().getItemMeta();
                     List<String> lore = Config.getItemLore(nbtItem.getString("saphyr-item"));
                     kills++;
-                    nbtItem.setString("kills", String.valueOf(kills));
+                    nbtItem.setInteger("kills", kills);
                     nbtItem.setString("last-kill", lastKill);
                     killer.setItemInHand(nbtItem.getItem());
                     Messages.replaceOwnerPlaceHolder(lore, owner);
@@ -172,5 +172,11 @@ public class PlayerEvents implements Listener {
             Player player = event.getPlayer();
             player.updateInventory();
         }
+    }
+
+    @EventHandler
+    public void onPlayerMoveFarmArmor(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+        
     }
 }

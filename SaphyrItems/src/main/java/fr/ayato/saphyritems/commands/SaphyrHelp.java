@@ -27,21 +27,34 @@ public class SaphyrHelp implements CommandExecutor {
             player.openInventory(CommandMenu.initCommandGui());
             return true;
         } else if (args.length == 4) {
-            final Player player = Bukkit.getPlayer(args[1]);
-            if (player.hasPermission("saphyritems") || sender instanceof ConsoleCommandSender) {
+            if (sender instanceof Player) {
+                Player playerExecutor = (Player) sender;
+                if (playerExecutor.hasPermission("saphyritems")) {
+                    Player playerToGive = Bukkit.getPlayer(args[1]);
+                    final String item = args[2];
+                    if (plugin.getConfig().contains("items." + item)) {
+                        if (!Bukkit.getOnlinePlayers().contains(playerToGive)) return false;
+                        final int number = Integer.parseInt(args[3]);
+                        for (int i = 0; i < number; i++) {
+                            playerToGive.getInventory().addItem(ItemBuilder.data(item, args[1]));
+                        }
+                        playerToGive.updateInventory();
+                    }
+                    return true;
+                }
+            } else if (sender instanceof ConsoleCommandSender) {
+                Player playerToGive = Bukkit.getPlayer(args[1]);
                 final String item = args[2];
                 if (plugin.getConfig().contains("items." + item)) {
-                    if (!Bukkit.getOnlinePlayers().contains(player)) return false;
+                    if (!Bukkit.getOnlinePlayers().contains(playerToGive)) return false;
                     final int number = Integer.parseInt(args[3]);
                     for (int i = 0; i < number; i++) {
-                        player.getInventory().addItem(ItemBuilder.data(item, args[1]));
+                        playerToGive.getInventory().addItem(ItemBuilder.data(item, args[1]));
                     }
-                    player.updateInventory();
+                    playerToGive.updateInventory();
                 }
                 return true;
             }
-        } else {
-            sender.sendMessage("§b§lSaphyrItems §f» §b/sitems");
         }
         return false;
     }

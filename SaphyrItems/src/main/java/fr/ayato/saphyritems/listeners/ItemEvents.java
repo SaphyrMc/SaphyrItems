@@ -150,6 +150,19 @@ public class ItemEvents implements Listener {
                         }
                         effectsHelmet.put(player.getUniqueId(), effectList);
                     }
+                } else {
+                    if (effectsHelmet.containsKey(player.getUniqueId())) {
+                        try {
+                            for (String effect : effectsHelmet.get(player.getUniqueId())) {
+                                String[] split = effect.split(":");
+                                PotionEffectType type = PotionEffectType.getByName(split[0]);
+                                player.removePotionEffect(type);
+                            }
+                            effectsHelmet.remove(player.getUniqueId());
+                        } catch (NullPointerException ignored) {
+                        }
+                        effectsHelmet.remove(player.getUniqueId());
+                    }
                 }
             } else {
                 if (effectsHelmet.containsKey(player.getUniqueId())) {
@@ -180,6 +193,19 @@ public class ItemEvents implements Listener {
                             player.addPotionEffect(type.createEffect(Integer.MAX_VALUE, amplifier));
                         }
                         effectsChestplate.put(player.getUniqueId(), effectList);
+                    }
+                } else {
+                    if (effectsChestplate.containsKey(player.getUniqueId())) {
+                        try {
+                            for (String effect : effectsChestplate.get(player.getUniqueId())) {
+                                String[] split = effect.split(":");
+                                PotionEffectType type = PotionEffectType.getByName(split[0]);
+                                player.removePotionEffect(type);
+                            }
+                            effectsChestplate.remove(player.getUniqueId());
+                        } catch (NullPointerException ignored) {
+                        }
+                        effectsChestplate.remove(player.getUniqueId());
                     }
                 }
             } else {
@@ -212,6 +238,19 @@ public class ItemEvents implements Listener {
                         }
                         effectsLeggings.put(player.getUniqueId(), effectList);
                     }
+                } else {
+                    if (effectsLeggings.containsKey(player.getUniqueId())) {
+                        try {
+                            for (String effect : effectsLeggings.get(player.getUniqueId())) {
+                                String[] split = effect.split(":");
+                                PotionEffectType type = PotionEffectType.getByName(split[0]);
+                                player.removePotionEffect(type);
+                            }
+                            effectsLeggings.remove(player.getUniqueId());
+                        } catch (NullPointerException ignored) {
+                        }
+                        effectsLeggings.remove(player.getUniqueId());
+                    }
                 }
             } else {
                 if (effectsLeggings.containsKey(player.getUniqueId())) {
@@ -242,6 +281,19 @@ public class ItemEvents implements Listener {
                             player.addPotionEffect(type.createEffect(Integer.MAX_VALUE, amplifier));
                         }
                         effectsBoots.put(player.getUniqueId(), effectList);
+                    }
+                } else {
+                    if (effectsBoots.containsKey(player.getUniqueId())) {
+                        try {
+                            for (String effect : effectsBoots.get(player.getUniqueId())) {
+                                String[] split = effect.split(":");
+                                PotionEffectType type = PotionEffectType.getByName(split[0]);
+                                player.removePotionEffect(type);
+                            }
+                            effectsBoots.remove(player.getUniqueId());
+                        } catch (NullPointerException ignored) {
+                        }
+                        effectsBoots.remove(player.getUniqueId());
                     }
                 }
             } else {
